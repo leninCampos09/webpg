@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Notificación Push</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 15px;
+            font-size: 16px;
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enviar Notificación Push (Simulada)</h2>
+        <input type="text" id="asunto" placeholder="Asunto de la notificación" required>
+        <textarea id="mensaje" placeholder="Mensaje de la notificación" required></textarea>
+        <button onclick="enviarNotificacion()">Enviar Notificación</button>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Simular la obtención de un token
+        function simularObtenerToken() {
+            const tokenSimulado = "simulado-token-" + Math.random().toString(36).substring(7);  // Token simulado aleatorio
+            console.log("Token simulado obtenido:", tokenSimulado);
+            return tokenSimulado;
+        }
+
+        // Enviar la notificación (Simulada)
+        function enviarNotificacion() {
+            const asunto = document.getElementById("asunto").value;
+            const mensaje = document.getElementById("mensaje").value;
+            const token = simularObtenerToken();  // Simular la obtención del token
+
+            if (!asunto || !mensaje) {
+                document.getElementById("message").innerHTML = "Por favor, complete todos los campos.";
+                document.getElementById("message").classList.add("error");
+                return;
+            }
+
+            // Simula el "envío" de la notificación
+            console.log(`Enviando notificación con token: ${token}`);
+            console.log(`Asunto: ${asunto}`);
+            console.log(`Mensaje: ${mensaje}`);
+
+            // Aquí puedes simular una respuesta exitosa o un error
+            setTimeout(() => {
+                document.getElementById("message").innerHTML = "La notificación se ha enviado con éxito.";
+                document.getElementById("message").classList.remove("error");
+            }, 1000);  // Simulamos que la notificación se envía después de 1 segundo
+        }
+    </script>
+</body>
+</html>
